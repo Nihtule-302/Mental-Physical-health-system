@@ -163,7 +163,8 @@
                 <label for="specialization">Specialization</label>
                 <input type="text" id="specialization" name="specialization" placeholder="Mental/Physical">
             </div>
-            <a href="#" class="submit-button">Sign Up</a>
+
+            <a href="../Doctor/LoggedDoctor.php"  class="submit-button">Sign Up</button></a>
         </form>
     </div>
 </body>

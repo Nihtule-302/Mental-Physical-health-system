@@ -126,8 +126,8 @@
             <a href="#">About Us</a>
         </nav>
         <div class="auth">
-            <a href="#" class="register">Register</a>
-            <a href="#" class="login">Login</a>
+            <a href="Register.php" class="register">Register</a>
+            <a href="Login.php" class="login">Login</a>
         </div>
     </header>
     

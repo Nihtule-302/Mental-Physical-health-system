@@ -108,8 +108,8 @@
             <img src="https://undraw.co/api/illustrations/30cc6354-c6e7-4f85-b16f-7f66aa5b71e6" alt="Sign up Illustration">
         </div>
         <div class="button-group">
-            <a href="#" class="btn doctor">Doctor</a>
-            <a href="#" class="btn patient">Patient</a>
+            <a href="RegisterAsDoctor.php" class="btn doctor">Doctor</a>
+            <a href="RegisterAsPatient.php" class="btn patient">Patient</a>
         </div>
     </main>
 </body>

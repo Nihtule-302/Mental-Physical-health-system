@@ -170,7 +170,7 @@
                 <label for="treatment">Desired Treatment</label>
                 <input type="text" id="treatment" name="treatment" placeholder="Mental/Physical">
             </div>
-            <a href="#" class="submit-button">Sign Up</a>
+            <a href="../Patient/LoggedPatient.php"  class="submit-button">Sign Up</button></a>
         </form>
     </div>
 </body>
