@@ -119,7 +119,7 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="#" class="home-link">Home</a>
+        <a href="LoggedDoctor" class="home-link">Home</a>
     </nav>
 
     <!-- Main Content -->
