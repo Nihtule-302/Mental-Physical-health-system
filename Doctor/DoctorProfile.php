@@ -169,7 +169,7 @@
         <div class="header">
             <h1>Hello Dr. Peter,</h1>
             <nav>
-                <a href="#">Home</a>
+                <a href="LoggedDoctor">Home</a>
                 <a href="#">Contact</a>
                 <a href="#">About Us</a>
             </nav>

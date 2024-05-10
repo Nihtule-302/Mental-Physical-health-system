@@ -165,7 +165,7 @@
         <div class="header">
             <h1>Hello, Jane Doe!</h1>
             <nav>
-                <a href="#">Home</a>
+                <a href="LoggedPatient">Home</a>
                 <a href="#">Contact</a>
                 <a href="#">About Us</a>
             </nav>
