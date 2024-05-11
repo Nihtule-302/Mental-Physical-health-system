@@ -117,6 +117,63 @@
             opacity: 0.9;
         }
 
+        .footer {
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    font-size: 14px;
+    color: #4f4f4f;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    color: #3a3a3a;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.footer-column a {
+    text-decoration: none;
+    color: #4f4f4f;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: #00b5c3;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #b7c0db;
+    font-size: 12px;
+    color: #4f4f4f;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+
     </style>
 </head>
 <body>
@@ -147,5 +204,40 @@
             </form>
         </div>
     </main>
+    <footer class="footer">
+    <div class="footer-column">
+        <div class="logo">Mind<span>Mates</span></div>
+        <p>You've reached the end, but it's not the end!</p>
+        <p>Remember, you're not alone. Reach out, seek support, and prioritize your mental well-being.</p>
+    </div>
+    <div class="footer-column">
+        <h3>Services</h3>
+        <a href="#">Psychotherapy</a>
+        <a href="#">Mental Counseling</a>
+        <a href="#">Support Groups</a>
+        <a href="#">Case Management</a>
+    </div>
+    <div class="footer-column">
+        <h3>Contact</h3>
+        <p><img src="https://example.com/phone_icon.svg" alt="Phone"> +14 5464 8272</p>
+        <p><img src="https://example.com/email_icon.svg" alt="Email"> rona@domain.com</p>
+        <p><img src="https://example.com/location_icon.svg" alt="Location"> Lazzy Tower 192, Burn Swiss</p>
+    </div>
+    <div class="footer-column">
+        <h3>Links</h3>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Term Of Use</a>
+    </div>
+</footer>
+<div class="footer-bottom">
+    <p>copyright 2024 @mindmates all right reserved</p>
+    <div class="social-icons">
+        <a href="#" style="background-image: url('https://example.com/instagram_icon.png');"></a>
+        <a href="#" style="background-image: url('https://example.com/facebook_icon.png');"></a>
+        <a href="#" style="background-image: url('https://example.com/twitter_icon.png');"></a>
+        <a href="#" style="background-image: url('https://example.com/linkedin_icon.png');"></a>
+    </div>
+</div>
+
 </body>
 </html>
