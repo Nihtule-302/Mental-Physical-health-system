@@ -73,10 +73,19 @@
         }
 
         .login {
+            padding: 10px 20px;
+            background: linear-gradient(to right, #0093E9, #80D0C7);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
             text-decoration: none;
-            font-size: 16px;
-            color: #4f4f4f;
-            font-weight: 400;
+            font-weight: 600;
+            margin-right: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .login:hover {
+            opacity: 0.8;
         }
 
         .main-content {
