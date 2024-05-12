@@ -185,12 +185,8 @@ $conn->close();
                 <input type="date" name="birthday" required>
             </div>
             <div class="form-group">
-                <label>Treatment Plan</label>
-                <input type="text" name="plan" required>
-            </div>
-            <div class="form-group">
                 <label>Insurance Info</label>
-                <input type="text" name="insurance" required>
+                <input type="text" name="insurance">
             </div>
             <div class="form-group">
                 <label>Password</label>

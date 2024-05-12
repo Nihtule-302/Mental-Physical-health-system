@@ -1,5 +1,48 @@
 <?php
-// Your PHP code here (if any)
+    // Start session
+    session_start();
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "mental/phsycal"; // Corrected database name
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+
+    // Check if the form is submitted
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Retrieve username and password from the form
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+
+        // Perform database query to check if the user exists and password is correct
+        // You should replace this with your actual database query
+        // Example:
+        $query = "SELECT * FROM users WHERE user_name='$username' AND password='$password'";
+        $result = mysqli_query($conn, $query);
+
+        // Assuming you have a database connection already established
+        // Replace $connection with your actual database connection variable
+
+        // If the query returns a row, the user exists and password is correct
+        // Example:
+        if (mysqli_num_rows($result) == 1) {
+            $row = mysqli_fetch_assoc($result);
+            $patient_id = $row['patient_id'];
+
+            $_SESSION['patient_id'] = $patient_id;
+
+            //     // Redirect to logged in page
+            header("Location: PatientHome.php");
+            exit();
+        } else {
+            header("Location: #");
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -139,7 +182,7 @@
             <img src="https://undraw.co/api/illustrations/8a31f02c-0658-49c6-b2ea-65f2e89f7065" alt="Login Illustration">
         </div>
         <div class="form-container">
-            <form action="LoggedPatient.php" method="POST">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
