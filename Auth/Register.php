@@ -95,7 +95,7 @@
 <body>
     <main class="welcome-page">
         <h1>WELCOME!</h1>
-        <p>Don't have an account, <a href="#" class="signup-link">Sign up</a></p>
+        <p>Already have an account, <a href="Login.php" class="signup-link">Login</a></p>
         <div class="illustration">
             <img src="https://undraw.co/api/illustrations/30cc6354-c6e7-4f85-b16f-7f66aa5b71e6" alt="Sign up Illustration">
         </div>

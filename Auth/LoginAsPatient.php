@@ -134,12 +134,12 @@
 <body>
     <main class="login-page">
         <h1>Login</h1>
-        <p>Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+        <p>Don't have an account? <a href="Register.php" class="signup-link">Sign up</a></p>
         <div class="illustration">
             <img src="https://undraw.co/api/illustrations/8a31f02c-0658-49c6-b2ea-65f2e89f7065" alt="Login Illustration">
         </div>
         <div class="form-container">
-            <form action="#" method="POST">
+            <form action="../Patient/LoggedPatient.php" method="POST">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
@@ -150,7 +150,7 @@
                     <a href="#">Forgot Password?</a>
                 </div>
 
-                <a href="../Patient/LoggedPatient.php" type="submit" class="btn">Login</button></a>
+                <button type="submit" class="btn">Login</button>
             </form>
         </div>
     </main>

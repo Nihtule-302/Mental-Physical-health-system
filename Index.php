@@ -3,7 +3,7 @@ session_start();
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_name'])) {
-    header("Location: Auth/Login.php");
+    header("Location: /Auth/Login.php");
     exit();
 }
 
@@ -25,7 +25,7 @@ if ($_SESSION['role'] == 'Doctor') {
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
-    header("Location: Auth/Login.php");
+    header("Location: /Auth/Login.php");
     exit();
 }
 ?>

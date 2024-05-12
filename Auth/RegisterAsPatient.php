@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         VALUES ($user_id, '$name', '$email', '$treatment', '$gender', '$birthday', '$plan', '$insurance')";
         if ($conn->query($sql) === TRUE) {
             $_SESSION['message'] = "Registration successful!";
-            header("Location: home.php");
+            header("Location: ../index.php");
             exit();
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
