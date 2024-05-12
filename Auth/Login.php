@@ -47,17 +47,23 @@
             if (mysqli_num_rows($patientQueryResult) == 1) {
                 $row = mysqli_fetch_assoc($patientQueryResult);
                 $patient_id = $row['id'];
+                $patient_name = $row['name'];
+                $_SESSION['name'] = $patient_name;
+
                 $_SESSION['patient_id'] = $patient_id;
                 $_SESSION['role'] = 'Patient';
-                header("Location: PatientHome.php");
+                header("Location: ../home.php");
             }
 
             if (mysqli_num_rows($doctorQueryResult) == 1) {
                 $row = mysqli_fetch_assoc($doctorQueryResult);
                 $doctor_id = $row['id'];
+                $doctor_name = $row['name'];
+                $_SESSION['name'] = $doctor_name;
+
                 $_SESSION['doctor_id'] = $doctor_id;
                 $_SESSION['role'] = 'Doctor';
-                header("Location: DoctorHome.php");
+                header("Location: ../home.php");
             }
             
             exit();

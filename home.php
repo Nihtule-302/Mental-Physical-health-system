@@ -10,6 +10,7 @@ if (!isset($_SESSION['user_name'])) {
 // Get the username and user ID from the session
 $userName = $_SESSION['user_name'];
 $userID = $_SESSION['user_id'];
+$name = $_SESSION['name'];
 
 // Determine user role
 if ($_SESSION['role'] == 'Doctor') {
@@ -158,7 +159,7 @@ if (isset($_POST['logout'])) {
 
         <main class="content">
             <div class="text-content">
-                <h1>Welcome, <span class="highlight"><?php echo $userName; ?></span></h1>
+                <h1>Welcome, <span class="highlight"><?php echo $name; ?></span></h1>
                 <p>Welcome to MindMates, your haven for mental wellness! Explore resources, find support, and connect with a community dedicated to well-being.</p>
                 <?php if ($userRole === 'Patient') { ?>
                         <a href="ChooseSymptoms.php" class="cta-button">Book A session</a>
