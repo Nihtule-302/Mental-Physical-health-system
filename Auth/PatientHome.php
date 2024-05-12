@@ -102,6 +102,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
@@ -119,7 +120,7 @@
         <div class="text-content">
             <h1>Welcome, <span class="highlight">Ali!</span></h1>
             <p>Welcome to MindMates, your haven for mental wellness! Explore resources, find support, and connect with a community dedicated to well-being.</p>
-            <a href="#" class="cta-button">Book A session</a>
+            <a href="ChooseSymptoms.php" class="cta-button">Book A session</a>
         </div>
         <div class="illustration">
             <img src="Images\Homepatient.jpg" alt="Meditation Illustration">

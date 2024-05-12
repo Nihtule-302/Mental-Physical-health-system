@@ -31,6 +31,9 @@
         // If the query returns a row, the user exists and password is correct
         // Example:
         if (mysqli_num_rows($result) == 1) {
+            $_SESSION['user_name'] = $_POST["username"];
+            $_SESSION['user_id'] = $_POST["password"];
+
             $row = mysqli_fetch_assoc($result);
             $user_id = $row['id'];
 
@@ -45,6 +48,7 @@
                 $row = mysqli_fetch_assoc($patientQueryResult);
                 $patient_id = $row['id'];
                 $_SESSION['patient_id'] = $patient_id;
+                $_SESSION['role'] = 'Patient';
                 header("Location: PatientHome.php");
             }
 
@@ -52,6 +56,7 @@
                 $row = mysqli_fetch_assoc($doctorQueryResult);
                 $doctor_id = $row['id'];
                 $_SESSION['doctor_id'] = $doctor_id;
+                $_SESSION['role'] = 'Doctor';
                 header("Location: DoctorHome.php");
             }
             
