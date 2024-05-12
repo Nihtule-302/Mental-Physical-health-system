@@ -108,8 +108,8 @@
         <span class="logo">MindMates</span>
         <div>
             <a href="#">Home</a>
-            <a href="#">Contact</a>
-            <a href="#">About Us</a>
+            <a href="Contact.php">Contact</a>
+            <a href="Aboutus.php">About Us</a>
             <a href="PatientProfile.php" class="cta-button">Your Profile</a>
         </div>
     </nav>
@@ -122,7 +122,7 @@
             <a href="#" class="cta-button">Book A session</a>
         </div>
         <div class="illustration">
-            <img src="https://undraw.co/api/illustrations/2f173b40-d7e4-499d-a920-95153b2b01cc" alt="Meditation Illustration">
+            <img src="Images\Homepatient.jpg" alt="Meditation Illustration">
         </div>
     </main>
 </body>

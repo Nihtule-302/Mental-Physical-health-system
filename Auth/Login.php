@@ -105,7 +105,7 @@
         <h1>WELCOME!</h1>
         <p>Don't have an account, <a href="Register.php" class="signup-link">Sign up</a></p>
         <div class="illustration">
-            <img src="https://undraw.co/api/illustrations/30cc6354-c6e7-4f85-b16f-7f66aa5b71e6" alt="Login Illustration">
+            <img src="Images\Reg-removebg-preview.png" alt="Login Illustration">
         </div>
         <div class="button-group">
             <a href="LoginAsDoctor.php" class="btn doctor">Doctor</a>

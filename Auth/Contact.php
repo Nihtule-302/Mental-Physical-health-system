@@ -181,8 +181,7 @@
         <div class="logo">MindMates</div>
         <nav>
             <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
+            <a href="Aboutus.php">About Us</a>
             <a href="PatientProfile.php" class="cta-button">Your Profile</a>
         </nav>
     </header>
