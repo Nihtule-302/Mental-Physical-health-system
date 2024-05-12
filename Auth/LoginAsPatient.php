@@ -34,25 +34,27 @@
             $row = mysqli_fetch_assoc($result);
             $user_id = $row['id'];
 
-            /* same loggin functionality
-                $patientQuery = "SELECT * FROM patients WHERE user_id ='$user_id'";
+            
+            $patientQuery = "SELECT * FROM patients WHERE user_id ='$user_id'";
             $patientQueryResult = mysqli_query($conn, $patientQuery);
 
             $doctorQuery = "SELECT * FROM doctors WHERE user_id ='$user_id'";
             $doctorQueryResult = mysqli_query($conn, $doctorQuery);
 
             if (mysqli_num_rows($patientQueryResult) == 1) {
-                $row = mysqli_fetch_assoc($result);
+                $row = mysqli_fetch_assoc($patientQueryResult);
                 $patient_id = $row['id'];
                 $_SESSION['patient_id'] = $patient_id;
                 header("Location: PatientHome.php");
             }
-            */
 
-            $_SESSION['user_id'] = $user_id;
-
-            //     // Redirect to logged in page
-            header("Location: PatientHome.php");
+            if (mysqli_num_rows($doctorQueryResult) == 1) {
+                $row = mysqli_fetch_assoc($doctorQueryResult);
+                $doctor_id = $row['id'];
+                $_SESSION['doctor_id'] = $doctor_id;
+                header("Location: DoctorHome.php");
+            }
+            
             exit();
         } else {
             header("Location: #");
