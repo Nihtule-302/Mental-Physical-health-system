@@ -17,12 +17,11 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve username and password from the form
         $username = $_POST["username"];
-        $password = $_POST["password"];
 
         // Perform database query to check if the user exists and password is correct
         // You should replace this with your actual database query
         // Example:
-        $query = "SELECT * FROM users WHERE user_name='$username' AND password='$password'";
+        $query = "SELECT * FROM users WHERE user_name='$username'";
         $result = mysqli_query($conn, $query);
 
         // Assuming you have a database connection already established
@@ -31,11 +30,11 @@
         // If the query returns a row, the user exists and password is correct
         // Example:
         if (mysqli_num_rows($result) == 1) {
-            $_SESSION['user_name'] = $_POST["username"];
-            $_SESSION['user_id'] = $_POST["password"];
-
+            
             $row = mysqli_fetch_assoc($result);
             $user_id = $row['id'];
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_name'] = $username;
 
             
             $patientQuery = "SELECT * FROM patients WHERE user_id ='$user_id'";

@@ -162,9 +162,9 @@ if (isset($_POST['logout'])) {
                 <h1>Welcome, <span class="highlight"><?php echo $name; ?></span></h1>
                 <p>Welcome to MindMates, your haven for mental wellness! Explore resources, find support, and connect with a community dedicated to well-being.</p>
                 <?php if ($userRole === 'Patient') { ?>
-                        <a href="ChooseSymptoms.php" class="cta-button">Book A session</a>
+                        <a href="Auth/ChooseSymptoms.php" class="cta-button">Book A session</a>
                     <?php } elseif ($userRole === 'Doctor') { ?>
-                        <a href="EnterAppointments.php" class="cta-button">Add Appointment</a>
+                        <a href="Auth/EnterAppointments.php" class="cta-button">Add Appointment</a>
                     <?php } ?> 
             </div>
 
