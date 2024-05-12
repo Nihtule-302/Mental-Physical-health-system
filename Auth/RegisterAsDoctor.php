@@ -1,5 +1,102 @@
-<?php 
+<?php
+session_start(); // Start the session at the beginning
 
+// Initialize variables
+$name = $email = $phone = $license = $certifications = $specialization = $password = "";
+$error = "";
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate and sanitize input data
+    $name = sanitizeInput($_POST['name']);
+    $email = sanitizeInput($_POST['email']);
+    $phone = sanitizeInput($_POST['phone']);
+    $specialization = sanitizeInput($_POST['specialization']);
+    $passwordd = sanitizeInput($_POST['password']);
+
+    // Validate files and move them to the upload folder
+    $licenseTarget = handleFileUpload('license');
+    $certificationsTarget = handleFileUpload('certifications');
+
+    // Establish database connection
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "mental/phsycal";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Insert into 'users' table
+    $sqlUser = "INSERT INTO users (user_name, password, role) VALUES ('$email', '$passwordd', 'Doctor')";
+    if ($conn->query($sqlUser) === TRUE) {
+        $user_id = $conn->insert_id; // Get the last inserted user ID
+
+        // Insert into 'doctors' table
+        $sqlDoctor = "INSERT INTO doctors (user_id, name, email, phone_number, medical_license, certifications, specialization)
+        VALUES ($user_id, '$name', '$email', '$phone', '$licenseTarget', '$certificationsTarget', '$specialization')";
+
+        if ($conn->query($sqlDoctor) === TRUE) {
+            // Start the session after successful registration
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['user_name'] = $email; // Assuming email is the user's name for simplicity
+            $_SESSION['role'] = 'Doctor'; // Set the role to Doctor
+
+            // Redirect to home.php after successful registration
+            $_SESSION['message'] = "Registration successful!";
+            header("Location: home.php");
+            exit();
+        } else {
+            $error = "Error inserting into doctors table: " . $conn->error;
+        }
+    } else {
+        $error = "Error inserting into users table: " . $conn->error;
+    }
+
+    $conn->close();
+}
+
+// Function to sanitize input data
+function sanitizeInput($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+// Function to handle file upload
+function handleFileUpload($inputName) {
+    $targetDir = "uploads/";
+    $targetFile = $targetDir . basename($_FILES[$inputName]["name"]);
+    $uploadOk = 1;
+    $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    // Check file size (limit to 5MB)
+    if ($_FILES[$inputName]["size"] > 5 * 1024 * 1024) {
+        $error = "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    // Allow only certain file formats
+    if ($fileType != "pdf" && $fileType != "doc" && $fileType != "docx") {
+        $error = "Sorry, only PDF, DOC, and DOCX files are allowed.";
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk == 0) {
+        $error = "Sorry, your file was not uploaded.";
+    } else {
+        if (move_uploaded_file($_FILES[$inputName]["tmp_name"], $targetFile)) {
+            return $targetFile;
+        } else {
+            $error = "Sorry, there was an error uploading your file.";
+        }
+    }
+    return "";
+}
 ?>
 
 <html lang="en">
@@ -85,24 +182,29 @@
         }
 
         .password-group {
+            flex: 1 1 calc(50% - 15px);
             display: flex;
-
-            border: 2px solid #b7c0db;
-            border-radius: 10px;
-
-            transition: border-color 0.3s;
+            flex-direction: column;
         }
 
-        .password-group:focus-within {
-            border-color: #0093e9;
+        .password-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #3a3a3a;
         }
 
         .password-group input {
-            flex: 1;
-            border: none;
-            outline: none;
+            padding: 12px;
+            border: 2px solid #b7c0db;
+            border-radius: 10px;
             font-size: 14px;
             color: #6f7e8c;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .password-group input:focus {
+            border-color: #0093e9;
         }
 
         .submit-button {
@@ -128,43 +230,41 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>WELCOME, Dr!</h1>
-            <p>Create your Account</p>
+            <h1>Register as Doctor</h1>
         </div>
-        <form>
+        <form action="RegisterAsDoctor.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" name="full-name" placeholder="Ashika Jain">
-            </div>
-            <div class="form-group">
-                <label for="phone-number">Phone No.</label>
-                <input type="text" id="phone-number" name="phone-number" placeholder="Phone No.">
+                <label>Name</label>
+                <input type="text" name="name" required>
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="AshikaJain45@gmail.com">
+                <label>Email</label>
+                <input type="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="medical-license">Medical License</label>
-                <input type="text" id="medical-license" name="medical-license" placeholder="URL">
+                <label>Phone Number</label>
+                <input type="tel" name="phone" required>
             </div>
-            <div class="form-group password-group">
-                <input type="password" id="password" name="password" placeholder="Password">
-                
-            </div>
-            <div class="form-group password-group">
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
+            <div class="form-group">
+                <label for="license">Medical License</label>
+                <input type="file" name="license" id="license" accept=".pdf,.doc,.docx" required>
             </div>
             <div class="form-group">
                 <label for="certifications">Certifications</label>
-                <input type="text" id="certifications" name="certifications" placeholder="URL">
+                <input type="file" name="certifications" id="certifications" accept=".pdf,.doc,.docx" required>
             </div>
             <div class="form-group">
-                <label for="specialization">Specialization</label>
-                <input type="text" id="specialization" name="specialization" placeholder="Mental/Physical">
+                <label>Specialization</label>
+                <select name="specialization" required>
+                    <option value="Mental">Mental</option>
+                    <option value="Physical">Physical</option>
+                </select>
             </div>
-
-            <a href="../Doctor/LoggedDoctor.php"  class="submit-button">Sign Up</button></a>
+            <div class="password-group">
+                <label>Password</label>
+                <input type="password" name="password" required>
+            </div>
+            <button type="submit" class="submit-button">Register</button>
         </form>
     </div>
 </body>

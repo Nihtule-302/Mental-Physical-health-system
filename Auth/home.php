@@ -1,6 +1,35 @@
-<?php 
+<?php
+session_start();
 
+// Check if the user is logged in
+if (!isset($_SESSION['user_name'])) {
+    header("Location: Login.php");
+    exit();
+}
+
+// Get the username and user ID from the session
+$userName = $_SESSION['user_name'];
+$userID = $_SESSION['user_id'];
+
+// Determine user role
+if ($_SESSION['role'] == 'Doctor') {
+    $userRole = 'Doctor';
+} elseif ($_SESSION['role'] == 'Patient') {
+    $userRole = 'Patient';
+} else {
+    // Default to Guest role if role is not set or unrecognized
+    $userRole = 'Guest';
+}
+
+// Handle logout
+if (isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header("Location: Login.php");
+    exit();
+}
 ?>
+
 
 <html lang="en">
 <head>
@@ -128,24 +157,33 @@
 </head>
 <body>
     <header class="header">
-        <div class="logo">Mind<span>Mates</span></div>
+    <div class="logo">Mind<span class="highlight">Mates</span></div>
         <nav class="nav">
             <a href="#">Home</a>
             <a href="#">Contact</a>
             <a href="#">About Us</a>
         </nav>
         <div class="auth">
-            <a href="Register.php" class="register">Register</a>
-            <a href="Login.php" class="login">Login</a>
+            <div class="user-menu">
+                <span>Welcome, <?php echo $userName; ?></span>
+                <form method="POST" action="">
+                    <button type="submit" name="logout">Logout</button>
+                </form>
+            </div>
         </div>
+        <?php if ($userRole === 'Patient') { ?>
+                <a href="PatientProfile.php" class="profile-link">Patient Profile</a>
+            <?php } elseif ($userRole === 'Doctor') { ?>
+                <a href="DoctorProfile.php" class="profile-link">Doctor Profile</a>
+            <?php } ?>
+    </div>
     </header>
     
-    <main class="main-content">
-        <h1>Healthy Minds, Happy Lives <span class="highlight">Mental Health</span> Consultancy</h1>
-        <p class="description">Welcome to MindMates, your haven for mental wellness! Explore resources, find support, and connect with a community dedicated to well-being.</p>
-        <div class="illustration">
-            <img src="https://undraw.co/api/illustrations/3fcbe13a-741a-49ec-bfa6-6f14e2c841c1" alt="Meditation Illustration">
+        <div class="main-content">
+            <h1>Welcome to MindMates</h1>
+            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus ligula mauris, et viverra quam dignissim et.</p>
+            <div class="illustration">
+            <img src="illustration.png" alt="Illustration">
         </div>
-    </main>
 </body>
 </html>

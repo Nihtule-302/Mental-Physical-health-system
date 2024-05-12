@@ -1,11 +1,3 @@
-<?php
-// Your PHP code here (if any)
-?>
-
-<?php
-// Your PHP code here (if any)
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,8 +100,8 @@
             <img src="https://undraw.co/api/illustrations/30cc6354-c6e7-4f85-b16f-7f66aa5b71e6" alt="Sign up Illustration">
         </div>
         <div class="button-group">
-            <a href="RegisterAsDoctor.php" class="btn doctor">Doctor</a>
-            <a href="RegisterAsPatient.php" class="btn patient">Patient</a>
+            <a href="registerAsDoctor.php" class="btn doctor">Register as Doctor</a>
+            <a href="registerAsPatient.php" class="btn patient">Register as Patient</a>
         </div>
     </main>
 </body>
