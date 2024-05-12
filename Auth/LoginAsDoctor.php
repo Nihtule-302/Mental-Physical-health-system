@@ -150,7 +150,7 @@
                     <a href="#">Forgot Password?</a>
                 </div>
 
-                <a href="../Doctor/LoggedDoctor.php" <button type="submit" class="btn">Login</button></a>
+                <a href="../Index.php" <button type="submit" class="btn">Login</button></a>
             </form>
         </div>
     </main>
