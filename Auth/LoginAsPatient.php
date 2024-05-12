@@ -139,7 +139,7 @@
             <img src="https://undraw.co/api/illustrations/8a31f02c-0658-49c6-b2ea-65f2e89f7065" alt="Login Illustration">
         </div>
         <div class="form-container">
-            <form action="../Patient/LoggedPatient.php" method="POST">
+            <form action="LoggedPatient.php" method="POST">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
