@@ -32,9 +32,24 @@
         // Example:
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
-            $patient_id = $row['patient_id'];
+            $user_id = $row['id'];
 
-            $_SESSION['patient_id'] = $patient_id;
+            /* same loggin functionality
+                $patientQuery = "SELECT * FROM patients WHERE user_id ='$user_id'";
+            $patientQueryResult = mysqli_query($conn, $patientQuery);
+
+            $doctorQuery = "SELECT * FROM doctors WHERE user_id ='$user_id'";
+            $doctorQueryResult = mysqli_query($conn, $doctorQuery);
+
+            if (mysqli_num_rows($patientQueryResult) == 1) {
+                $row = mysqli_fetch_assoc($result);
+                $patient_id = $row['id'];
+                $_SESSION['patient_id'] = $patient_id;
+                header("Location: PatientHome.php");
+            }
+            */
+
+            $_SESSION['user_id'] = $user_id;
 
             //     // Redirect to logged in page
             header("Location: PatientHome.php");
@@ -179,7 +194,7 @@
         <h1>Login</h1>
         <p>Don't have an account? <a href="Register.php" class="signup-link">Sign up</a></p>
         <div class="illustration">
-            <img src="Images\login.png" alt="Login Illustration">
+            <img src="https://undraw.co/api/illustrations/8a31f02c-0658-49c6-b2ea-65f2e89f7065" alt="Login Illustration">
         </div>
         <div class="form-container">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
