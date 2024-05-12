@@ -26,14 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        
         session_start();
         $doctor_id = $_SESSION['doctor_id']; 
-        
+        // Insert data into appointments table including doctor_id
         $sql = "INSERT INTO appointments (date, price, type, location, duration, doctor_id)
                 VALUES ('$date', '$price', '$type', '$location', '$duration', '$doctor_id')";
 
         if ($conn->query($sql) === TRUE) {
             $successMessage = "Appointment added successfully!";
-            header("Location: {$_SERVER['PHP_SELF']}");
-            exit();
         } else {
             $errorMessage = "Error: " . $sql . "<br>" . $conn->error;
         }
