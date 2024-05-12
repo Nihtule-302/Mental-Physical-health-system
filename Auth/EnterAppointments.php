@@ -1,6 +1,51 @@
 <?php 
+$servername = "127.0.0.1";
+$username = "root";
+$password = "";
+$dbname = "mental/phsycal"; // Corrected database name
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    if (isset($_POST['date'], $_POST['price'], $_POST['session-type'], $_POST['location'], $_POST['duration'])) {
+      
+        $date = $_POST['date'];
+        $price = $_POST['price'];
+        $type = $_POST['session-type'];
+        $location = $_POST['location'];
+        $duration = $_POST['duration'];
+        
+       
+        session_start();
+        $doctor_id = $_SESSION['doctor_id']; 
+        
+        $sql = "INSERT INTO appointments (date, price, type, location, duration, doctor_id)
+                VALUES ('$date', '$price', '$type', '$location', '$duration', '$doctor_id')";
+
+        if ($conn->query($sql) === TRUE) {
+            $successMessage = "Appointment added successfully!";
+            header("Location: {$_SERVER['PHP_SELF']}");
+            exit();
+        } else {
+            $errorMessage = "Error: " . $sql . "<br>" . $conn->error;
+        }
+    } else {
+        $errorMessage = "Please fill out all the required fields.";
+    }
+}
+
+$conn->close();
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,14 +115,16 @@
         }
 
         input[type="text"],
-        input[type="date"] {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #e3e4f3;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
+input[type="date"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e3e4f3;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
 
         .btn {
             padding: 12px 40px;
@@ -114,6 +161,20 @@
         .home-link a:hover {
             text-decoration: underline;
         }
+     
+    .success-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 10px;
+        height: 40px;
+        color: green;
+    }
+
+    .error-message {
+        color: red;
+    }
     </style>
 </head>
 <body>
@@ -122,26 +183,48 @@
         <a href="LoggedDoctor" class="home-link">Home</a>
     </nav>
 
-    <!-- Main Content -->
+ 
     <main class="content">
-        <div class="form-container">
-            <div class="form-header">Form for Add Appointment</div>
-            <form action="#" method="POST">
-                <label for="name">Name*</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+    <div class="form-container">
+        <div class="form-header">Form for Add Appointment</div>
+        <form action="#" method="POST">
+            <!-- Date Field -->
+            <label for="date">Date*</label>
+            <input type="date" id="date" name="date" required>
 
-                <label for="session-type">Session Type*</label>
-                <input type="text" id="session-type" name="session-type" placeholder="Enter session type" required>
+      
+<label for="session-type">Session Type*</label>
+<select id="session-type" name="session-type" required>
+    <option value="Offline">Offline</option>
+    <option value="Online">Online</option>
+</select>
 
-                <label for="phone-no">Phone No.*</label>
-                <input type="text" id="phone-no" name="phone-no" placeholder="Enter your phone no." required>
 
-                <label for="date">Date*</label>
-                <input type="date" id="date" name="date" required>
+            
+            <label for="location">Location*</label>
+            <input type="text" id="location" name="location" placeholder="Enter location" required>
 
-                <button type="submit" class="btn">Submit</button>
-            </form>
-        </div>
-    </main>
+          
+            <label for="duration">Duration*</label>
+            <input type="text" id="duration" name="duration" placeholder="Enter duration" required>
+
+          
+            <label for="price">Price*</label>
+            <input type="number" id="price" name="price" placeholder="Enter price" required>
+
+            <button type="submit" class="btn">Submit</button>
+            <?php
+            if (isset($successMessage)) {
+                echo "<p class='success-message'>$successMessage</p>";
+            } elseif (isset($errorMessage)) {
+                echo "<p class='error-message'>$errorMessage</p>";
+            }
+            ?>
+        </form>
+    </div>
+</main>
+
+
+
 </body>
 </html>
