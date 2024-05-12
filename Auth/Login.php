@@ -1,9 +1,65 @@
 <?php
-// Your PHP code here (if any)
-?>
+    // Start session
+    session_start();
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "mental/phsycal"; // Corrected database name
 
-<?php
-// Your PHP code here (if any)
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+
+    // Check if the form is submitted
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Retrieve username and password from the form
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+
+        // Perform database query to check if the user exists and password is correct
+        // You should replace this with your actual database query
+        // Example:
+        $query = "SELECT * FROM users WHERE user_name='$username' AND password='$password'";
+        $result = mysqli_query($conn, $query);
+
+        // Assuming you have a database connection already established
+        // Replace $connection with your actual database connection variable
+
+        // If the query returns a row, the user exists and password is correct
+        // Example:
+        if (mysqli_num_rows($result) == 1) {
+            $row = mysqli_fetch_assoc($result);
+            $user_id = $row['id'];
+
+            
+            $patientQuery = "SELECT * FROM patients WHERE user_id ='$user_id'";
+            $patientQueryResult = mysqli_query($conn, $patientQuery);
+
+            $doctorQuery = "SELECT * FROM doctors WHERE user_id ='$user_id'";
+            $doctorQueryResult = mysqli_query($conn, $doctorQuery);
+
+            if (mysqli_num_rows($patientQueryResult) == 1) {
+                $row = mysqli_fetch_assoc($patientQueryResult);
+                $patient_id = $row['id'];
+                $_SESSION['patient_id'] = $patient_id;
+                header("Location: PatientHome.php");
+            }
+
+            if (mysqli_num_rows($doctorQueryResult) == 1) {
+                $row = mysqli_fetch_assoc($doctorQueryResult);
+                $doctor_id = $row['id'];
+                $_SESSION['doctor_id'] = $doctor_id;
+                header("Location: DoctorHome.php");
+            }
+            
+            exit();
+        } else {
+            header("Location: #");
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +67,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page - Doctor or Patient</title>
+    <title>Login Page - Mental Health</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         /* Import Google Fonts */
@@ -29,7 +85,7 @@
             color: #4f4f4f;
         }
 
-        .welcome-page {
+        .login-page {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -69,11 +125,32 @@
             height: auto;
         }
 
-        .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
+        .form-container {
+            background-color: #ffffff;
+            border: 2px solid #e3e4f3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 40px 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #3a3a3a;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e3e4f3;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
         }
 
         .btn {
@@ -85,31 +162,56 @@
             text-decoration: none;
             font-weight: 600;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+            width: 100%;
         }
 
         .btn:hover {
             opacity: 0.8;
         }
 
-        .doctor {
-            background: linear-gradient(to right, #0093E9, #80D0C7);
+        .forgot-password {
+            text-align: right;
+            margin-top: -15px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: #828282;
         }
 
-        .patient {
-            background: linear-gradient(to right, #80D0C7, #0093E9);
+        .forgot-password a {
+            color: #00b5c3;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <main class="welcome-page">
-        <h1>WELCOME!</h1>
-        <p>Don't have an account, <a href="Register.php" class="signup-link">Sign up</a></p>
+    <main class="login-page">
+        <h1>Login</h1>
+        <p>Don't have an account? <a href="Register.php" class="signup-link">Sign up</a></p>
         <div class="illustration">
-            <img src="Images\Reg-removebg-preview.png" alt="Login Illustration">
+            <img src="https://undraw.co/api/illustrations/8a31f02c-0658-49c6-b2ea-65f2e89f7065" alt="Login Illustration">
         </div>
-        <div class="button-group">
-            <a href="LoginAsDoctor.php" class="btn doctor">Doctor</a>
-            <a href="LoginAsPatient.php" class="btn patient">Patient</a>
+        <div class="form-container">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn">Login</button>
+            </form>
         </div>
     </main>
 </body>
