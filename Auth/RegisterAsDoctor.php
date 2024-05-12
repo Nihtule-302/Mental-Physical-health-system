@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect to home.php after successful registration
             $_SESSION['message'] = "Registration successful!";
-            header("Location: home.php");
+            header("Location: ../index.php");
             exit();
         } else {
             $error = "Error inserting into doctors table: " . $conn->error;
@@ -232,7 +232,7 @@ function handleFileUpload($inputName) {
         <div class="header">
             <h1>Register as Doctor</h1>
         </div>
-        <form action="RegisterAsDoctor.php" method="POST" enctype="multipart/form-data">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" name="name" required>

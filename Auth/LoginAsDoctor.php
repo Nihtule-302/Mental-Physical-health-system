@@ -134,7 +134,7 @@
 <body>
     <main class="login-page">
         <h1>Login</h1>
-        <p>Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+        <p>Don't have an account? <a href="Register.php" class="signup-link">Sign up</a></p>
         <div class="illustration">
             <img src="Images\login.png" alt="Login Illustration">
         </div>
