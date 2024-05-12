@@ -223,8 +223,8 @@ $conn->close();
             <h1>Hello Dr. <?php echo isset($doctorName) ? $doctorName : ""; ?>,</h1>
             <nav>
                 <a href="home">Home</a>
-                <a href="#">Contact</a>
-                <a href="#">About Us</a>
+                <a href="Contact.php">Contact</a>
+                <a href="Aboutus.php">About Us</a>
             </nav>
         </div>
         <div class="profile-info">
