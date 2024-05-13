@@ -146,6 +146,7 @@ $conn->close();
             font-size: 16px;
             color: #4f4f4f;
             font-weight: 500;
+            margin-left: 30px;
         }
 
         .header a:hover {
@@ -212,14 +213,14 @@ $conn->close();
         </div>
         <div class="profile-name"><?php echo isset($doctorName) ? "Dr. " . $doctorName : ""; ?></div>
         <ul class="sidebar-nav">
-            <li><a href="DoctorProfile.php"><img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Home_icon.svg" alt="Home Icon" width="20px"> Profile</a></li>
-            <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Appointment_icon.svg" alt="Appointment Icon" width="20px"> Your Appointments</a></li>
-            <li><a href="Logout.php"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logout_icon.svg" alt="Logout Icon" width="20px"> Logout</a></li>
+            <li><a href="DoctorProfile.php"><img src="../Style\Images\user-pen.png" alt="Home Icon" width="20px"> Profile</a></li>
+            <li><a href="#"><img src="../Style\Images\calendar-clock.png" alt="Session Icon" width="20px"> Your Appointments</a></li>
+            <li><a href="Logout.php"><img src="../Style\Images\sign-out-alt.png" alt="Logout Icon" width="20px"> Logout</a></li>
         </ul>
     </aside>
     <main class="main-content">
         <div class="header">
-            <h1>Hello Dr. Peter,</h1>
+            <h1>Hello Dr. <?php echo isset($doctorName) ? $doctorName : ""; ?>,</h1>
             <nav>
                 <a href="../home.php">Home</a>
                 <a href="../Contact.php">Contact</a>
