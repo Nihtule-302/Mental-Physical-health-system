@@ -198,6 +198,7 @@
                 echo '<div class="consultant-info"><strong>Date:</strong> ' . $consultant['date'] . '</div>';
                 echo '<div class="consultant-info"><strong>Time:</strong> ' . $consultant['time'] . '</div>';
                 echo '<div class="consultant-info"><strong>Duration:</strong> ' . $consultant['duration'] . '</div>';
+                echo '<div class="consultant-info"><strong>Price:</strong> ' . $consultant['price'] . '</div>';
                 
                 if ($consultant['type'] === "Offline") {
                     echo '<div class="consultant-info"><strong>Address:</strong> ' . $consultant['location'] . '</div>';
