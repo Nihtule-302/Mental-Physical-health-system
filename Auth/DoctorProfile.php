@@ -206,6 +206,13 @@ $conn->close();
             opacity: 0.9;
         }
 
+        .stars {
+            display: inline-block;
+            font-size: 24px;
+            font-family: Arial;
+            color: #d4af37; /* Gold color */
+        }
+
     </style>
 </head>
 <body>
@@ -238,6 +245,12 @@ $conn->close();
             <p><strong>Medical License:</strong> <?php echo isset($license) ? $license : ""; ?></p>
             <p><strong>Certifications:</strong> <?php echo isset($certifications) ? $certifications : ""; ?></p>
             <p><strong>Specialization:</strong> <?php echo isset($specialization) ? $specialization : ""; ?></p>
+            <h2>Doctor Evaluation</h2>
+            <!-- Display 4 full stars and 1 half star for a 4.2 average rating -->
+            <p class="stars">
+                ★★★★☆
+            </p>
+            <p>Average Rating: 4.2 / 5</p>
         </div>
     </main>
 </body>
