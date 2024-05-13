@@ -190,7 +190,7 @@
                         <th>Appointment Date</th>
                         <th>Treatment Type</th>
                         <th>Status</th>
-                        <th>Actions</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -199,21 +199,21 @@
                         <td>2024-06-15</td>
                         <td>Regular Checkup</td>
                         <td>Confirmed</td>
-                        <td><a href="#" class="edit-button">View</a></td>
+
                     </tr>
                     <tr>
                         <td>John Smith</td>
                         <td>2024-06-20</td>
                         <td>ٌRegular Checkup</td>
                         <td>Pending</td>
-                        <td><a href="#" class="edit-button">View</a></td>
+
                     </tr>
                     <tr>
                         <td>Emily Johnson</td>
                         <td>2024-07-01</td>
                         <td>Consultation</td>
                         <td>Cancelled</td>
-                        <td><a href="#" class="edit-button">View</a></td>
+
                     </tr>
                 </tbody>
             </table>
