@@ -72,6 +72,16 @@
             right: 30px;
         }
 
+        .eva-link {
+            text-decoration: none;
+            font-size: 16px;
+            color: #4f4f4f;
+            font-weight: 500;
+            position: absolute;
+            top: 30px;
+            right: 100px;
+        }
+
         .home-link:hover {
             color: #ffffff;
         }
@@ -80,11 +90,26 @@
 </head>
 <body>
     <a href="../home.php" class="home-link">Home</a>
+    <a href="Evaluation.php" class="eva-link">Evaluation</a>
     <div class="container">
         <div class="success-icon">&#10004;</div>
         <h1>Your session</h1>
         <h2>successfully Booked!</h2>
         <p>We're thrilled to be a part of your journey. Get ready to embark on a fulfilling experience tailored just for you. We can't wait to see you soon!</p>
     </div>
+
+<!--
+    <script>
+        // Function to redirect to another page
+        function redirectToPage() {
+            window.location.href = "Evaluation.php"; // Replace "target_page.html" with the URL of the page you want to redirect to
+        }
+
+        // Set a timeout to execute the redirectToPage function after 5 seconds
+        setTimeout(redirectToPage, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+
+    -->
+
 </body>
 </html>
