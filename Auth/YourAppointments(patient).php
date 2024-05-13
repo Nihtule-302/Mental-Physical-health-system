@@ -1,9 +1,32 @@
+<?php 
+session_start(); // Start the session
+
+$servername = "127.0.0.1";
+$username = "root";
+$password = "";
+$dbname = "mental/phsycal"; // Corrected database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+$sql = "SELECT patients.name AS patient_name, appointments.location AS city, appointments.date AS appointment_date 
+        FROM appointments 
+        INNER JOIN patients ON appointments.patient_id = patients.id";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindMates - Patient List</title>
+    <title>MindMates - Your Appointments</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -167,59 +190,52 @@
         <div class="profile-pic">
             <img src="https://undraw.co/api/illustrations/9d17b81d-d76c-4721-83a9-c31cfe123af1" alt="Doctor Profile Picture">
         </div>
-        <div class="profile-name">Dr. Peter</div>
+        <div class="profile-name"><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>,</div>
         <ul class="sidebar-nav">
-            <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Home_icon.svg" alt="Home Icon" width="20px"> Profile</a></li>
+            <li><a href="PatientProfile"><img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Home_icon.svg" alt="Home Icon" width="20px"> Profile</a></li>
             <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Appointment_icon.svg" alt="Appointment Icon" width="20px"> Your Appointments</a></li>
-            <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logout_icon.svg" alt="Logout Icon" width="20px"> Logout</a></li>
+            <li><a href="Logout.php"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logout_icon.svg" alt="Logout Icon" width="20px"> Logout</a></li>
         </ul>
     </aside>
     <main class="main-content">
         <div class="header">
-            <h1>Hello Dr. Peter,</h1>
+            <h1>Hello <?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>,</h1>
             <nav>
-                <a href="#">Home</a>
-                <a href="#">Contact</a>
-                <a href="#">About Us</a>
+                <a href="../home.php">Home</a>
+                <a href="../Contact.php">Contact</a>
+                <a href="../Aboutus.php">About Us</a>
             </nav>
         </div>
-        <div class="patient-list">
-            <h2>Patient List</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>City</th>
-                        <th>Appointment Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Jane Doe</td>
-                        <td>29</td>
-                        <td>New York</td>
-                        <td>2024-06-15</td>
-                        <td><a href="#" class="edit-button">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td>John Smith</td>
-                        <td>34</td>
-                        <td>Los Angeles</td>
-                        <td>2024-06-20</td>
-                        <td><a href="#" class="edit-button">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td>Emily Johnson</td>
-                        <td>27</td>
-                        <td>Chicago</td>
-                        <td>2024-07-01</td>
-                        <td><a href="#" class="edit-button">Edit</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <?php if ($result->num_rows > 0) { ?>
+            <div class="patient-list">
+                <h2>Patient List</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>Appointment Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while($row = $result->fetch_assoc()) { ?>
+                            <tr>
+                                <td><?php echo $row['patient_name']; ?></td>
+                                <td><?php echo $row['city']; ?></td>
+                                <td><?php echo $row['appointment_date']; ?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php } else {
+            echo "No appointments found.";
+        } ?>
     </main>
 </body>
+
 </html>
+
+<?php
+// Close the connection
+$conn->close();

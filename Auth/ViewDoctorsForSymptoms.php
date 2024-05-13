@@ -1,3 +1,59 @@
+<?php
+    // Start session
+    session_start();
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "mental/phsycal"; // Corrected database name
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Initialize consultants array
+    $consultants = [];
+
+    // SQL query to select all consultants
+    $sql = 'SELECT d.name AS doctor_name, d.specialization AS specialization,
+            DATE_FORMAT(a.date, "%Y-%m-%d") AS appointment_date, 
+            DATE_FORMAT(a.date, "%H:%i") AS appointment_time,
+            a.*
+        FROM doctors d
+        JOIN appointments a ON d.id = a.doctor_id
+        WHERE a.status = "Available"';
+
+    // Execute query
+    $result = mysqli_query($conn, $sql);
+    
+
+    // Check if there are rows returned
+    if (mysqli_num_rows($result) > 0) {
+        $_SESSION['NoAppointments'] = false;
+        // Loop through each row and populate $consultants array
+        while ($row = $result->fetch_assoc()) {
+            $consultants[] = [
+                'name' => $row['doctor_name'],
+                'specialization' => $row['specialization'],
+                'date' => $row['appointment_date'],
+                'time' => $row['appointment_time'],
+                'type' => $row['type'],
+                'location' => $row['location'],
+                'duration' => $row['duration'],
+                'price' => $row['price'],
+            ];
+           
+        }
+    }
+    else{
+        $_SESSION['NoAppointments'] = true;
+    }
+
+    // Close database connection
+    $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,34 +185,36 @@
     <h1>Discover the Faces Behind Our <span class="highlight"><?php echo ucfirst($selection); ?></span> Health Consultants</h1>
     <div class="consultant-grid">
         <?php
-        // Assuming you categorize consultants by their expertise in 'mental', 'physical', or both ('both')
-        $consultants = [
-            ['name' => 'Dr. Nada Mostafa', 'type' => 'mental', 'times' => '3:00 pm - 4:00 pm<br>5:00 pm - 6:00 pm', 'mode' => 'Online'],
-            ['name' => 'Dr. Peter Elia', 'type' => 'physical', 'times' => '3:00 pm - 4:00 pm<br>5:00 pm - 6:00 pm', 'mode' => 'Offline', 'address' => 'Any City, XYZ MP'],
-            ['name' => 'Dr. Saif Allah Mostafa', 'type' => 'both', 'times' => '3:00 pm - 4:00 pm<br>5:00 pm - 6:00 pm', 'mode' => 'Online'],
-            ['name' => 'Dr. Gana Yasser', 'type' => 'mental', 'times' => '3:00 pm - 4:00 pm<br>5:00 pm - 6:00 pm', 'mode' => 'Offline', 'address' => 'Any City, XYZ MP'],
-            ['name' => 'Dr. Ali Wafa', 'type' => 'physical', 'times' => '3:00 pm - 4:00 pm<br>5:00 pm - 6:00 pm', 'mode' => 'Online'],
-            ['name' => 'Dr. Ahmed Mahmoud', 'type' => 'both', 'times' => '3:00 pm - 4:00 pm<br>5:00 pm - 6:00 pm', 'mode' => 'Offline', 'address' => 'Any City, XYZ MP']
-        ];
 
         foreach ($consultants as $consultant) {
             // Display all if "both" is selected or match the type
-            if ($selection === 'both' || $consultant['type'] === $selection) {
+            if ($selection === 'both' || $consultant['specialization'] === $selection) {
                 echo '<div class="consultant-card">';
-                echo '<div class="consultant-avatar"><img src="https://undraw.co/api/illustrations/' . ($consultant['mode'] == 'Online' ? '9d17b81d-d76c-4721-83a9-c31cfe123af1' : '31e03e74-2e27-44e3-a5e1-319e7bfc7c4c') . '" alt="' . $consultant['name'] . '"></div>';
-                echo '<div class="consultant-name">' . $consultant['name'] . '</div>';
-                echo '<div class="consultant-info"><strong>Type:</strong> ' . $consultant['mode'] . '</div>';
-                echo '<div class="consultant-info"><strong>Date:</strong> Friday 3-4</div>';
-                echo '<div class="consultant-info">' . $consultant['times'] . '</div>';
-                if (isset($consultant['address'])) {
-                    echo '<div class="consultant-info"><strong>Address:</strong> ' . $consultant['address'] . '</div>';
+                echo '<div class="consultant-avatar"><img src="https://undraw.co/api/illustrations/'  . '"></div>';
+
+                echo '<div class="consultant-name">' . "Dr. " .$consultant['name'] . '</div>';
+
+                echo '<div class="consultant-info"><strong>Type:</strong> ' . $consultant['type'] . '</div>';
+                echo '<div class="consultant-info"><strong>Date:</strong> ' . $consultant['date'] . '</div>';
+                echo '<div class="consultant-info"><strong>Time:</strong> ' . $consultant['time'] . '</div>';
+                echo '<div class="consultant-info"><strong>Duration:</strong> ' . $consultant['duration'] . '</div>';
+                echo '<div class="consultant-info"><strong>Price:</strong> ' . $consultant['price'] . '</div>';
+                
+                if ($consultant['type'] === "Offline") {
+                    echo '<div class="consultant-info"><strong>Address:</strong> ' . $consultant['location'] . '</div>';
                 }
-                echo '<a href="#" class="book-button">Book</a>';
+                echo '<a href="Payment" class="book-button">Book</a>';
                 echo '</div>';
             }
         }
         ?>
     </div>
-    <a href="#" class="view-all">View All</a>
+    <?php 
+        if(!$_SESSION['NoAppointments']){
+            echo '<a href="#" class="view-all">View All</a>';
+        }else{
+            echo 'no appointments available';
+        }
+    ?>
 </body>
 </html>
