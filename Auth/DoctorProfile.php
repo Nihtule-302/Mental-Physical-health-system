@@ -214,7 +214,7 @@ $conn->close();
 
         <div class="profile-name"><?php echo isset($doctorName) ? $doctorName : ""; ?></div>
         <ul class="sidebar-nav">
-            <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Session_icon.svg" alt="Session Icon" width="20px"> Your Session</a></li>
+            <li><a href="PatientList"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Session_icon.svg" alt="Session Icon" width="20px"> Your Session</a></li>
             <li><a href="?logout=1"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logout_icon.svg" alt="Logout Icon" width="20px"> Logout</a></li>
         </ul>
     </aside>
@@ -235,7 +235,7 @@ $conn->close();
             <p><strong>Medical License:</strong> <?php echo isset($license) ? $license : ""; ?></p>
             <p><strong>Certifications:</strong> <?php echo isset($certifications) ? $certifications : ""; ?></p>
             <p><strong>Specialization:</strong> <?php echo isset($specialization) ? $specialization : ""; ?></p>
-            <a href="#" class="edit-button">Edit Profile</a>
+            <a href="EditProfile" class="edit-button">Edit Profile</a>
         </div>
     </main>
 </body>
