@@ -216,6 +216,7 @@ $conn->close();
         </div>
         <div class="profile-name"><?php echo isset($doctorName) ? "Dr. " . $doctorName : ""; ?></div>
         <ul class="sidebar-nav">
+            <li><a href="#"><img src="../Style\Images\user-pen.png" alt="Home Icon" width="20px"> Profile</a></li>
             <li><a href="YourAppointments(doctor).php"><img src="../Style\Images\calendar-clock.png" alt="Session Icon" width="20px"> Your Session</a></li>
             <li><a href="Logout.php"><img src="../Style\Images\sign-out-alt.png" alt="Logout Icon" width="20px"> Logout</a></li>
         </ul>

@@ -1,3 +1,48 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: Login.php");
+    exit();
+}
+
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mental/phsycal"; // Update with your actual database name
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$userID = $_SESSION['user_id'];
+
+$sql = "SELECT * FROM doctors WHERE user_id = $userID";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Doctor profile found, fetch data
+    $row = $result->fetch_assoc();
+    $doctorID = $row['id']; // Get the doctor ID
+    $doctorName = $row['name'];
+    $doctorEmail = $row['email'];
+    $phone = $row['phone_number'];
+    $license = $row['medical_license'];
+    $certifications = $row['certifications'];
+    $specialization = $row['specialization'];
+} else {
+    // No doctor profile found for the user
+    $error = "Doctor profile not found!";
+}
+
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -163,9 +208,9 @@
     <aside class="sidebar">
         <div class="logo">Mind<span>Mates</span></div>
         <div class="profile-pic">
-            <img src="https://undraw.co/api/illustrations/9d17b81d-d76c-4721-83a9-c31cfe123af1" alt="Doctor Profile Picture">
+            <img src="..\Style\Images\a4040890a14cf4de8ecea56265f66cf7.jpg" alt="Doctor Profile Picture">
         </div>
-        <div class="profile-name">Dr. Peter</div>
+        <div class="profile-name"><?php echo isset($doctorName) ? "Dr. " . $doctorName : ""; ?></div>
         <ul class="sidebar-nav">
             <li><a href="DoctorProfile.php"><img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Home_icon.svg" alt="Home Icon" width="20px"> Profile</a></li>
             <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Appointment_icon.svg" alt="Appointment Icon" width="20px"> Your Appointments</a></li>
