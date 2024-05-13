@@ -132,9 +132,9 @@
     <div class="container">
         <div class="doctor-card">
             <div class="doctor-avatar">
-                <img src="https://undraw.co/api/illustrations/3bcb08e4-ff10-478e-b3c7-3f5e61a35296" alt="Dr. Ahmed Mahmoud">
+            <img src="..\Style\Images\a4040890a14cf4de8ecea56265f66cf7.jpg" alt="Doctor Profile Picture">
             </div>
-            <h2>Dr. Ahmed Mahmoud</h2>
+            <h2>Dr. amr</h2>
             <div class="doctor-info"><strong>Type:</strong> online</div>
             <div class="doctor-info"><strong>Date:</strong> Friday 3-4</div>
             <div class="doctor-info">3:00 pm - 4:00 pm</div>
@@ -144,7 +144,7 @@
         <form action="PaymentSuccessful" method="post">
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="gana09890@gmail.com">
+        <input type="email" id="email" name="email" placeholder="example@example.com">
     </div>
     <div class="form-group">
         <label for="card-info">Card information</label>
