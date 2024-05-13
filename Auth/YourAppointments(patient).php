@@ -9,11 +9,41 @@ $dbname = "mental/phsycal"; // Corrected database name
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: Login.php");
+    exit();
+}
+
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$userID = $_SESSION['user_id'];
+// Retrieve user's information from the patients table
+$sql = "SELECT * FROM patients WHERE user_id = $userID";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // User found, fetch user data
+    $row = $result->fetch_assoc();
+    $name = $row['name'];
+    $email = $row['email'];
+    $desiredTreatment = $row['desired_treatment'];
+    $gender = $row['gender'];
+    $birthday = $row['birthday'];
+    $treatmentPlan = $row['treatment_plan'];
+    $insuranceInfo = $row['insurance_info'];
+} else {
+    // User not found or no data retrieved
+    $name = "N/A";
+    $email = "N/A";
+    $desiredTreatment = "N/A";
+    $gender = "N/A";
+    $birthday = "N/A";
+    $treatmentPlan = "N/A";
+    $insuranceInfo = "N/A";
+}
 
 $sql = "SELECT patients.name AS patient_name, appointments.location AS city, appointments.date AS appointment_date 
         FROM appointments 
@@ -190,7 +220,7 @@ $result = $conn->query($sql);
         <div class="profile-pic">
         <img src="..\Style\Images\5a54cfdb6320b05029b8fafb6fdb5f4e.jpg" alt="Patient Profile Picture">
         </div>
-        <div class="profile-name"><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>,</div>
+        <div class="profile-name"><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?></div>
         <ul class="sidebar-nav">
             <li><a href="PatientProfile"><img src="../Style\Images\user-pen.png" alt="Home Icon" width="20px"> Profile</a></li>
             <li><a href="#"><img src="../Style\Images\calendar-clock.png" alt="Appointment Icon" width="20px"> Your Appointments</a></li>
@@ -199,7 +229,7 @@ $result = $conn->query($sql);
     </aside>
     <main class="main-content">
         <div class="header">
-            <h1>Hello <?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>,</h1>
+            <h1>Hello, <?php echo $name; ?>!</h1>
             <nav>
                 <a href="../home.php">Home</a>
                 <a href="../Contact.php">Contact</a>
