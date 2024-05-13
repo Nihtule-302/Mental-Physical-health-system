@@ -97,9 +97,9 @@
     <header>
         <div class="logo">MindMates</div>
         <nav>
-            <a href="#">Home</a>
+            <a href="home.php">Home</a>
             <a href="Contact.php">Contact</a>
-            <a href="PatientProfile.php" class="cta-button">Your Profile</a>
+            <a href="Auth/PatientProfile.php" class="cta-button">Your Profile</a>
         </nav>
     </header>
 
