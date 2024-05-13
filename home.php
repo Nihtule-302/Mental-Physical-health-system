@@ -156,22 +156,25 @@ if (isset($_POST['logout'])) {
     </nav>
     
             
+    <main class="content">
+    <div class="text-content">
+        <?php if ($userRole === 'Doctor') { ?>
+            <h1>Welcome, <span class="highlight">Dr. <?php echo $name; ?></span></h1>
+        <?php } elseif ($userRole === 'Patient') { ?>
+            <h1>Welcome, <span class="highlight"><?php echo $name; ?></span></h1>
+        <?php } ?>
+        <p>Welcome to MindMates, your haven for mental wellness! Explore resources, find support, and connect with a community dedicated to well-being.</p>
+        <?php if ($userRole === 'Patient') { ?>
+            <a href="Auth/ChooseSymptoms.php" class="cta-button">Book A session</a>
+        <?php } elseif ($userRole === 'Doctor') { ?>
+            <a href="Auth/EnterAppointments.php" class="cta-button">Add Appointment</a>
+        <?php } ?> 
+    </div>
 
-        <main class="content">
-            <div class="text-content">
-                <h1>Welcome, <span class="highlight"><?php echo $name; ?></span></h1>
-                <p>Welcome to MindMates, your haven for mental wellness! Explore resources, find support, and connect with a community dedicated to well-being.</p>
-                <?php if ($userRole === 'Patient') { ?>
-                        <a href="Auth/ChooseSymptoms.php" class="cta-button">Book A session</a>
-                    <?php } elseif ($userRole === 'Doctor') { ?>
-                        <a href="Auth/EnterAppointments.php" class="cta-button">Add Appointment</a>
-                    <?php } ?> 
-            </div>
+    <div class="illustration">
+        <img src="Style\Images\download (1).jpeg" alt="Meditation Illustration">
+    </div>
+</main>
 
-            <div class="illustration">
-                <img src="Images\Homepatient.jpg" alt="Meditation Illustration">
-            </div>
-
-        </main>
 </body>
 </html>

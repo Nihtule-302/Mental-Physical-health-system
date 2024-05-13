@@ -209,16 +209,16 @@ $conn->close();
     <aside class="sidebar">
         <div class="logo">Mind<span>Mates</span></div>
         <div class="profile-pic">
-            <img src="https://undraw.co/api/illustrations/9d17b81d-d76c-4721-83a9-c31cfe123af1" alt="Patient Profile Picture">
+            <img src="..\Style\Images\5a54cfdb6320b05029b8fafb6fdb5f4e.jpg" alt="Patient Profile Picture">
         </div>
         <div class="profile-name"><?php echo $name; ?></div>
         <ul class="sidebar-nav">
-            <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Home_icon.svg" alt="Home Icon" width="20px"> Profile</a></li>
-            <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Appointment_icon.svg" alt="Appointment Icon" width="20px"> Your Appointments</a></li>
+            <li><a href="#"><img src="..\Style\Images\user-pen.png" alt="Home Icon" width="20px"> Profile</a></li>
+            <li><a href="#"><img src="..\Style\Images\calendar-clock.png" alt="Appointment Icon" width="20px"> Your Appointments</a></li>
             <li>
                 <!-- Logout form -->
                 <form method="POST">
-                    <button type="submit" name="logout"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logout_icon.svg" alt="Logout Icon" width="20px"> Logout</button>
+                    <button type="submit" name="logout"><img src="..\Style\Images\sign-out-alt.png" alt="Logout Icon" width="20px"> Logout</button>
                 </form>
             </li>
         </ul>
@@ -228,8 +228,8 @@ $conn->close();
             <h1>Hello, <?php echo $name; ?>!</h1>
             <nav>
                 <a href="#">Home</a>
-                <a href="#">Contact</a>
-                <a href="#">About Us</a>
+                <a href="..\Contact.php">Contact</a>
+                <a href="..\Aboutus.php">About Us</a>
             </nav>
         </div>
         <div class="profile-info">

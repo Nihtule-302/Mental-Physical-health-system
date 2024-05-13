@@ -206,7 +206,7 @@
         <h1>Login</h1>
         <p>Don't have an account? <a href="Register.php" class="signup-link">Sign up</a></p>
         <div class="illustration">
-            <img src="https://undraw.co/api/illustrations/8a31f02c-0658-49c6-b2ea-65f2e89f7065" alt="Login Illustration">
+            <img src="../Style\Images\69843e99dbfc7b273f8508aa23cf4f60-removebg-preview.png" alt="Login Illustration">
         </div>
         <div class="form-container">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">

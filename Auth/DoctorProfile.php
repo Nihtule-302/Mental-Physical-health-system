@@ -211,20 +211,22 @@ $conn->close();
 <body>
     <aside class="sidebar">
         <div class="logo">Mind<span>Mates</span></div>
-
-        <div class="profile-name"><?php echo isset($doctorName) ? $doctorName : ""; ?></div>
+        <div class="profile-pic">
+            <img src="..\Style\Images\a4040890a14cf4de8ecea56265f66cf7.jpg" alt="Doctor Profile Picture">
+        </div>
+        <div class="profile-name"><?php echo isset($doctorName) ? "Dr. " . $doctorName : ""; ?></div>
         <ul class="sidebar-nav">
-            <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Session_icon.svg" alt="Session Icon" width="20px"> Your Session</a></li>
-            <li><a href="?logout=1"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logout_icon.svg" alt="Logout Icon" width="20px"> Logout</a></li>
+            <li><a href="#"><img src="../Style\Images\calendar-clock.png" alt="Session Icon" width="20px"> Your Session</a></li>
+            <li><a href="?logout=1"><img src="..\Style\Images\sign-out-alt.png" alt="Logout Icon" width="20px"> Logout</a></li>
         </ul>
     </aside>
     <main class="main-content">
         <div class="header">
             <h1>Hello Dr. <?php echo isset($doctorName) ? $doctorName : ""; ?>,</h1>
             <nav>
-                <a href="home">Home</a>
-                <a href="Contact.php">Contact</a>
-                <a href="Aboutus.php">About Us</a>
+                <a href="../home.php">Home</a>
+                <a href="../Contact.php">Contact</a>
+                <a href="../Aboutus.php">About Us</a>
             </nav>
         </div>
         <div class="profile-info">

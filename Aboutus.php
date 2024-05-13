@@ -50,9 +50,10 @@
         }
         .bold-text {
             font-weight: bold;
-            color: #56E0E0;
+            color: #8ac9ce; /* Color change */
             font-size: 24px; 
-            margin-top: 10px; 
+            margin-top: 0; /* Adjusted margin to move it up */
+             margin-bottom: 30px; /* Added margin for spacing */
         }
         .cta-button {
             padding: 10px 30px;
@@ -97,9 +98,8 @@
     <header>
         <div class="logo">MindMates</div>
         <nav>
-            <a href="#">Home</a>
+            <a href="home.php">Home</a>
             <a href="Contact.php">Contact</a>
-            <a href="PatientProfile.php" class="cta-button">Your Profile</a>
         </nav>
     </header>
 
@@ -108,7 +108,7 @@
             <h1>About Us</h1>
         </div>
         <div class="about-content">
-            <img src="Images\img1.jpg" alt="Image 1">
+            <img src="Style\Images\img1.jpg" alt="Image 1">
             <div class="about-text">
                 <p class="bold-text">Discover the Faces Behind<br>Our Mental Health<br>Consultancy.</p>
                 <p>Meet our compassionate Mates at MindMates. With expertise in various fields, they're here to support you on your journey to mental wellness.</p>

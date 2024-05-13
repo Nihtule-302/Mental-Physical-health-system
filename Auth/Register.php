@@ -97,7 +97,7 @@
         <h1>WELCOME!</h1>
         <p>Already have an account, <a href="Login.php" class="signup-link">Login</a></p>
         <div class="illustration">
-        <img src="Images\Reg-removebg-preview.png"  alt="Sign up Illustration">
+        <img src="..\Style\Images\Reg-removebg-preview.png"  alt="Sign up Illustration">
         </div>
         <div class="button-group">
             <a href="registerAsDoctor.php" class="btn doctor">Register as Doctor</a>
