@@ -79,7 +79,7 @@
     </style>
 </head>
 <body>
-    <a href="#" class="home-link">Home</a>
+    <a href="../home.php" class="home-link">Home</a>
     <div class="container">
         <div class="success-icon">&#10004;</div>
         <h1>Your session</h1>
