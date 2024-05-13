@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindMates - Patient List</title>
+    <title>MindMates - Your Appointments</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -101,14 +101,13 @@
             font-size: 16px;
             color: #4f4f4f;
             font-weight: 500;
-            margin-left: 30px;
         }
 
         .header a:hover {
             color: #1c1c1c;
         }
 
-        .patient-list {
+        .appointment-list {
             background-color: #ffffff;
             padding: 40px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
@@ -116,7 +115,7 @@
             border: 1px solid #b7c0db;
         }
 
-        .patient-list h2 {
+        .appointment-list h2 {
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 30px;
@@ -158,7 +157,6 @@
         .edit-button:hover {
             opacity: 0.9;
         }
-
     </style>
 </head>
 <body>
@@ -183,39 +181,39 @@
                 <a href="#">About Us</a>
             </nav>
         </div>
-        <div class="patient-list">
-            <h2>Patient List</h2>
+        <div class="appointment-list">
+            <h2>Your Appointments</h2>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>City</th>
+                        <th>Patient Name</th>
                         <th>Appointment Date</th>
+                        <th>Treatment Type</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Jane Doe</td>
-                        <td>29</td>
-                        <td>New York</td>
                         <td>2024-06-15</td>
-                        <td><a href="#" class="edit-button">Edit</a></td>
+                        <td>Regular Checkup</td>
+                        <td>Confirmed</td>
+                        <td><a href="#" class="edit-button">View</a></td>
                     </tr>
                     <tr>
                         <td>John Smith</td>
-                        <td>34</td>
-                        <td>Los Angeles</td>
                         <td>2024-06-20</td>
-                        <td><a href="#" class="edit-button">Edit</a></td>
+                        <td>ٌRegular Checkup</td>
+                        <td>Pending</td>
+                        <td><a href="#" class="edit-button">View</a></td>
                     </tr>
                     <tr>
                         <td>Emily Johnson</td>
-                        <td>27</td>
-                        <td>Chicago</td>
                         <td>2024-07-01</td>
-                        <td><a href="#" class="edit-button">Edit</a></td>
+                        <td>Consultation</td>
+                        <td>Cancelled</td>
+                        <td><a href="#" class="edit-button">View</a></td>
                     </tr>
                 </tbody>
             </table>
