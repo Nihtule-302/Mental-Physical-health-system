@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 
 $sql = "SELECT patients.name AS patient_name, appointments.location AS city, appointments.date AS appointment_date 
         FROM appointments 
-        INNER JOIN patients ON appointments.patient_id = patients.patient_id";
+        INNER JOIN patients ON appointments.patient_id = patients.id";
 $result = $conn->query($sql);
 ?>
 
@@ -190,7 +190,7 @@ $result = $conn->query($sql);
         <div class="profile-pic">
             <img src="https://undraw.co/api/illustrations/9d17b81d-d76c-4721-83a9-c31cfe123af1" alt="Doctor Profile Picture">
         </div>
-        <div class="profile-name">Dr. <?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>,</div>
+        <div class="profile-name"><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>,</div>
         <ul class="sidebar-nav">
             <li><a href="../home.php"><img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Home_icon.svg" alt="Home Icon" width="20px"> Profile</a></li>
             <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Appointment_icon.svg" alt="Appointment Icon" width="20px"> Your Appointments</a></li>
@@ -199,7 +199,7 @@ $result = $conn->query($sql);
     </aside>
     <main class="main-content">
         <div class="header">
-            <h1>Hello Dr <?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>,</h1>
+            <h1>Hello <?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>,</h1>
             <nav>
                 <a href="#">Home</a>
                 <a href="#">Contact</a>
