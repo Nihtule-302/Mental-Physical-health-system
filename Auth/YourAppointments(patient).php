@@ -188,13 +188,13 @@ $result = $conn->query($sql);
     <aside class="sidebar">
         <div class="logo">Mind<span>Mates</span></div>
         <div class="profile-pic">
-            <img src="https://undraw.co/api/illustrations/9d17b81d-d76c-4721-83a9-c31cfe123af1" alt="Doctor Profile Picture">
+        <img src="..\Style\Images\5a54cfdb6320b05029b8fafb6fdb5f4e.jpg" alt="Patient Profile Picture">
         </div>
         <div class="profile-name"><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>,</div>
         <ul class="sidebar-nav">
-            <li><a href="PatientProfile"><img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Home_icon.svg" alt="Home Icon" width="20px"> Profile</a></li>
-            <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Appointment_icon.svg" alt="Appointment Icon" width="20px"> Your Appointments</a></li>
-            <li><a href="Logout.php"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logout_icon.svg" alt="Logout Icon" width="20px"> Logout</a></li>
+            <li><a href="PatientProfile"><img src="../Style\Images\user-pen.png" alt="Home Icon" width="20px"> Profile</a></li>
+            <li><a href="#"><img src="../Style\Images\calendar-clock.png" alt="Appointment Icon" width="20px"> Your Appointments</a></li>
+            <li><a href="Logout.php"><img src="../Style\Images\sign-out-alt.png" alt="Logout Icon" width="20px"> Logout</a></li>
         </ul>
     </aside>
     <main class="main-content">
