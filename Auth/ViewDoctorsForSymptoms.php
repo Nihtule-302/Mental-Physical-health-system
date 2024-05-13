@@ -202,7 +202,7 @@
                 if ($consultant['type'] === "Offline") {
                     echo '<div class="consultant-info"><strong>Address:</strong> ' . $consultant['location'] . '</div>';
                 }
-                echo '<a href="#" class="book-button">Book</a>';
+                echo '<a href="Payment" class="book-button">Book</a>';
                 echo '</div>';
             }
         }

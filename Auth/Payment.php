@@ -141,7 +141,7 @@
             <div class="doctor-info"><strong>Amount:</strong> 600 EGP</div>
         </div>
         <div class="payment-form">
-        <form>
+        <form action="PaymentSuccessful" method="post">
     <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" placeholder="gana09890@gmail.com">
