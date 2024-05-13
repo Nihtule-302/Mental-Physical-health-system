@@ -113,7 +113,7 @@ $conn->close();
         }
 
         input[type="text"],
-input[type="date"],
+input[type="datetime-local"],
 input[type="number"],
 select {
     width: 100%;
@@ -178,7 +178,7 @@ select {
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="LoggedDoctor" class="home-link">Home</a>
+        <a href="../home.php" class="home-link">Home</a>
     </nav>
 
  
@@ -188,7 +188,7 @@ select {
         <form action="#" method="POST">
             <!-- Date Field -->
             <label for="date">Date*</label>
-            <input type="date" id="date" name="date" required>
+            <input type="datetime-local" id="date" name="date" required>
 
       
 <label for="session-type">Session Type*</label>
@@ -217,6 +217,7 @@ select {
             } elseif (isset($errorMessage)) {
                 echo "<p class='error-message'>$errorMessage</p>";
             }
+            
             ?>
         </form>
     </div>

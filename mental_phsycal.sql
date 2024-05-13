@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 12, 2024 at 04:55 PM
+-- Generation Time: May 13, 2024 at 05:32 PM
 -- Server version: 8.2.0
 -- PHP Version: 7.4.33
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `appointments` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `patient_id` bigint UNSIGNED DEFAULT NULL,
   `doctor_id` bigint UNSIGNED NOT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL,
   `price` double(8,2) NOT NULL,
   `status` enum('Available','Booked') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Available',
   `type` enum('Online','Offline') COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -125,22 +125,22 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(19, '2014_10_12_000000_create_users_table', 1),
-(20, '2014_10_12_100000_create_password_resets_table', 1),
-(21, '2019_08_19_000000_create_failed_jobs_table', 1),
-(22, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(23, '2024_05_10_122055_create_payments_table', 1),
-(24, '2024_05_10_122156_create_patients_table', 1),
-(25, '2024_05_10_122216_create_doctors_table', 1),
-(26, '2024_05_10_122243_create_appointments_table', 1),
-(27, '2024_05_10_122316_create_evaluations_table', 1);
+(37, '2014_10_12_000000_create_users_table', 1),
+(38, '2014_10_12_100000_create_password_resets_table', 1),
+(39, '2019_08_19_000000_create_failed_jobs_table', 1),
+(40, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(41, '2024_05_10_122055_create_payments_table', 1),
+(42, '2024_05_10_122156_create_patients_table', 1),
+(43, '2024_05_10_122216_create_doctors_table', 1),
+(44, '2024_05_10_122243_create_appointments_table', 1),
+(45, '2024_05_10_122316_create_evaluations_table', 1);
 
 -- --------------------------------------------------------
 

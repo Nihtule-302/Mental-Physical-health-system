@@ -141,29 +141,30 @@
             <div class="doctor-info"><strong>Amount:</strong> 600 EGP</div>
         </div>
         <div class="payment-form">
-            <form>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="gana09890@gmail.com">
-                </div>
-                <div class="form-group">
-                    <label for="card-info">Card information</label>
-                    <input type="text" id="card-info" name="card-info" placeholder="0000 0000 0000 0000">
-                </div>
-                <div class="form-group" style="display: flex; gap: 10px;">
-                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" style="flex: 1;">
-                    <input type="text" id="cvc" name="cvc" placeholder="CVC" style="flex: 1;">
-                </div>
-                <div class="form-group">
-                    <label for="name-on-card">Name on card</label>
-                    <input type="text" id="name-on-card" name="name-on-card" placeholder="Name">
-                </div>
-                <div class="remember-card">
-                    <input type="checkbox" id="remember-card" name="remember-card">
-                    <label for="remember-card">Remember My Card</label>
-                </div>
-                <a href="#" class="submit-button">Submit</a>
-            </form>
+        <form action="PaymentSuccessful.php" method="post">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="gana09890@gmail.com">
+    </div>
+    <div class="form-group">
+        <label for="card-info">Card information</label>
+        <input type="text" id="card-info" name="card-info" placeholder="0000 0000 0000 0000" pattern="[0-9]{16}" required>
+    </div>
+    <div class="form-group" style="display: flex; gap: 10px;">
+        <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required>
+        <input type="text" id="cvc" name="cvc" placeholder="CVC" pattern="[0-9]{3}" required>
+    </div>
+    <div class="form-group">
+        <label for="name-on-card">Name on card</label>
+        <input type="text" id="name-on-card" name="name-on-card" placeholder="Name" required>
+    </div>
+    <div class="remember-card">
+        <input type="checkbox" id="remember-card" name="remember-card">
+        <label for="remember-card">Remember My Card</label>
+    </div>
+    <button type="submit" class="submit-button">Submit</button>
+</form>
+
         </div>
     </div>
 </body>
