@@ -213,6 +213,7 @@ $conn->close();
         </div>
         <div class="profile-name"><?php echo $name; ?></div>
         <ul class="sidebar-nav">
+<<<<<<< Updated upstream
             <li><a href="#"><img src="../Style\Images\user-pen.png" alt="Home Icon" width="20px"> Profile</a></li>
             <li><a href="#"><img src="../Style\Images\calendar-clock.png" alt="Appointment Icon" width="20px"> Your Appointments</a></li>
             <li>
@@ -221,15 +222,20 @@ $conn->close();
                     <button type="submit" name="logout"><img src="../Style\Images\sign-out-alt.png" alt="Logout Icon" width="20px"> Logout</button>
                 </form>
             </li>
+=======
+            <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Home_icon.svg" alt="Home Icon" width="20px"> Profile</a></li>
+            <li><a href="YourAppointments(patient)"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Appointment_icon.svg" alt="Appointment Icon" width="20px"> Your Appointments</a></li>
+            <li><a href="Logout.php"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logout_icon.svg" alt="Logout Icon" width="20px"> Logout</a></li>
+>>>>>>> Stashed changes
         </ul>
     </aside>
     <main class="main-content">
         <div class="header">
             <h1>Hello, <?php echo $name; ?>!</h1>
             <nav>
-                <a href="#">Home</a>
-                <a href="#">Contact</a>
-                <a href="#">About Us</a>
+                <a href="../home.php">Home</a>
+                <a href="../Contact.php">Contact</a>
+                <a href="../Aboutus.php">About Us</a>
             </nav>
         </div>
         <div class="profile-info">
