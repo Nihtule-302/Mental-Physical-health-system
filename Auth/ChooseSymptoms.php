@@ -68,8 +68,8 @@
     <form action="ViewDoctorsForSymptoms.php" method="get">
         <label for="selection">Choose Symptoms:</label>
         <select name="selection" id="selection" class="dropdown">
-            <option value="mental">Mental</option>
-            <option value="physical">Physical</option>
+            <option value="Mental">Mental</option>
+            <option value="Physical">Physical</option>
             <option value="both" selected>Both</option>
         </select>
         <button type="submit">Submit</button>
