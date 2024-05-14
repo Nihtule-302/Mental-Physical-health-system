@@ -190,7 +190,7 @@
             // Display all if "both" is selected or match the type
             if ($selection === 'both' || $consultant['specialization'] === $selection) {
                 echo '<div class="consultant-card">';
-                echo '<div class="consultant-avatar"><img src="https://undraw.co/api/illustrations/'  . '"></div>';
+                echo '<div class="consultant-avatar"><img src="../Style\Images\profile.jpg'  . '"></div>';
 
                 echo '<div class="consultant-name">' . "Dr. " .$consultant['name'] . '</div>';
 
