@@ -1,9 +1,5 @@
 <?php
-// Your PHP code here (if any)
-?>
-
-<?php
-// Your PHP code here (if any)
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -11,12 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page - Doctor or Patient</title>
+    <title>MindMates - Mental Health and Physical Well-being</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Import Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -25,90 +18,107 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #eff8fb;
+            background-color: #ffffff;
             color: #4f4f4f;
+            overflow: hidden; /* Ensure no scrollbar appears */
         }
 
-        .welcome-page {
+        .navbar {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
-            padding: 40px 20px;
+            padding: 10px 20px; /* Reduced padding */
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
 
-        h1 {
-            font-size: 32px;
-            font-weight: 600;
-            color: #3a3a3a;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 14px;
-            color: #828282;
-            margin-bottom: 30px;
-        }
-
-        .signup-link {
-            color: #00b5c3;
-            font-weight: 600;
+        .navbar a {
             text-decoration: none;
+            color: #4f4f4f;
+            font-weight: 600;
+            margin-right: 10px; /* Reduced margin */
         }
 
-        .signup-link:hover {
-            text-decoration: underline;
+        .navbar a:last-child {
+            margin-right: 0;
         }
 
-        .illustration {
-            margin-bottom: 40px;
+        .navbar .logo {
+            font-weight: 600;
+            font-size: 20px; /* Reduced font size */
+            color: #3a3a3a;
         }
 
-        .illustration img {
-            max-width: 60%;
-            height: auto;
-        }
-
-        .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .btn {
-            padding: 12px 40px;
+        .navbar .btn {
+            padding: 8px 16px; /* Reduced padding */
             background: linear-gradient(to right, #0093E9, #80D0C7);
             color: #ffffff;
             border: none;
-            border-radius: 6px;
-            text-decoration: none;
+            border-radius: 20px;
             font-weight: 600;
+            text-align: center;
+            cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
         }
 
-        .btn:hover {
-            opacity: 0.8;
+        .navbar .btn:hover {
+            opacity: 0.9;
         }
 
-        .doctor {
-            background: linear-gradient(to right, #0093E9, #80D0C7);
+        .navbar .home-link {
+            color: #3d6ed9;
         }
 
-        .patient {
-            background: linear-gradient(to right, #80D0C7, #0093E9);
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px; /* Reduced padding */
+            height: calc(100vh - 60px); /* Ensure content fits within viewport */
+        }
+
+        .text-content {
+            max-width: 50%;
+        }
+
+        .text-content h1 {
+            font-size: 50px; /* Reduced font size */
+            font-weight: 700;
+            color:#677aea;
+            margin-bottom: 10px; /* Reduced margin */
+        }
+
+        .illustration {
+            max-width: 45%;
+            text-align: right;
+        }
+
+        .illustration img {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body>
-    <main class="welcome-page">
-        <h1>WELCOME!</h1>
-        <p>Don't have an account, <a href="Auth/Register.php" class="signup-link">Sign up</a></p>
-        <div class="illustration">
-            <img src="Style\Images\Reg-removebg-preview.png" alt="Login Illustration">
+    <nav class="navbar">
+        <span class="logo">MindMates</span>
+        <div>
+            <a href="#" class="home-link">Home</a>
+            <a href="Contact.php">Contact</a>
+            <a href="Aboutus.php">About Us</a>
+            <a href="Auth/Login.php" class="btn">Login</a>
+            <a href="Auth/Register.php" class="btn">Register</a>
         </div>
-        <div class="button-group">
-            <a href="Auth/Login.php" class="btn doctor">Login</a>
+    </nav>
+    
+    <main class="content">
+        <div class="text-content">
+            <h1>Your Partner in Mental and Physical Health, Start Now! </h1>
+        </div>
+
+        <div class="illustration">
+            <img src="Style\Images\d3d88d33c5de3db3dc290be7a3a707b6.jpg" alt="Meditation Illustration">
         </div>
     </main>
 </body>
