@@ -13,5 +13,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Redirect to another page after successful connection
+header("Location: ../home.php"); // Replace 'page.php' with the desired page
+exit(); // Make sure the script stops after the redirection
 
 ?>
